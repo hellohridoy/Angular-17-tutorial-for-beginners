@@ -11,4 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AppComponent {
   title = 'product-management';
+  a = 7;
+  b = 9;
 }
