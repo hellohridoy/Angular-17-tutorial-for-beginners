@@ -1,7 +1,5 @@
-@switch(type){ @case(1){
-<h1>Hello 1</h1>
-} @case(2){
-<h1>Hello 2</h1>
-} @default{
-<h1>Hello</h1>
-} }
+@for(item of types;track $index ){
+<h1>Hello {{ item }}</h1>
+}@empty{
+<h1>No elements in array</h1>
+}
