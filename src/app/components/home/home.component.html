@@ -1,5 +1,9 @@
-@for(item of types;track $index ){
-<h1>Hello {{ item }}</h1>
-}@empty{
-<h1>No elements in array</h1>
-}
+<div class="p-8 mt-4">
+  <div class="flex flex-wrap">
+    @for(item of products;track $index){
+    <div class="w-4/12 pr-2 mb-2">
+      <app-product-card></app-product-card>
+    </div>
+    }
+  </div>
+</div>
