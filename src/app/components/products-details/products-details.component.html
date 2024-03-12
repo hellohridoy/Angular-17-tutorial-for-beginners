@@ -1,0 +1,14 @@
+<mat-card class="shadow">
+  <img mat-card-image class="!h-72" [src]="product.image" />
+  <div class="p-4">
+    <h1>{{ product.name }}</h1>
+    <h2>{{ product.brand }}</h2>
+    <div class="flex gap-2">
+      <span>BDT . {{ product.currentPrice }}</span>
+      <span
+        ><s>BDT .{{ product.standardPrice }}</s></span
+      >
+      <span>(50%) {{ product.discount }} OFF</span>
+    </div>
+  </div>
+</mat-card>

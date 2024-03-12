@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { SearchComponent } from '../search/search.component';
 import { ProductService } from '../../product.service';
+import { Product } from '../../types/products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +15,10 @@ import { ProductService } from '../../product.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  products: any[] = [];
+  products: Product[] = [];
   filterProduct: any[] = [];
   productService = inject(ProductService);
+  router = inject(Router);
   ngOnInit() {
     this.productService.getProducts().subscribe((result) => {
       console.log(result);
@@ -25,6 +28,7 @@ export class HomeComponent {
   }
   onViewProduct(event: any) {
     console.log('onViewProduct Called', event);
+    this.router.navigateByUrl('/product/' + event);
   }
   onSearch(search: string) {
     console.log('home ', search);

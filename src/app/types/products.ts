@@ -4,5 +4,6 @@ export interface Product {
   image: string;
   currentPrice: number;
   standardPrice: number;
+  discount: number;
   name: string;
 }
