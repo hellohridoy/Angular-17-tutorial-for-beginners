@@ -73,4 +73,7 @@ export class HomeComponent {
       name: 'Men sky blue Jeans',
     },
   ];
+  onViewProduct(event: any) {
+    console.log('onViewProduct Called', event);
+  }
 }
