@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductCardComponent, CommonModule, MatCardModule],
+  imports: [ProductCardComponent, CommonModule, MatCardModule, SearchComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -20,27 +21,27 @@ export class HomeComponent {
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'Hello',
     },
     {
       id: '2',
-      brand: 'US.POLO',
+      brand: 'US',
       image:
         'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'Mensky',
     },
     {
       id: '3',
-      brand: 'US.POLO',
+      brand: 'UK',
       image:
         'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'Hi',
     },
     {
       id: '4',
@@ -50,7 +51,7 @@ export class HomeComponent {
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'blue ',
     },
     {
       id: '5',
@@ -60,7 +61,7 @@ export class HomeComponent {
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'Men ',
     },
     {
       id: '6',
@@ -70,10 +71,23 @@ export class HomeComponent {
       currentPrice: '500',
       standardPrice: '150',
       discount: '50',
-      name: 'Men sky blue Jeans',
+      name: 'Jeans',
     },
   ];
+
+  filterProduct: any[] = [];
+  ngOnInit() {
+    this.filterProduct = this.products;
+  }
   onViewProduct(event: any) {
     console.log('onViewProduct Called', event);
+  }
+  onSearch(search: string) {
+    console.log('home ', search);
+    if (search) {
+      this.filterProduct = this.products.filter((x) => x.name.includes(search));
+    } else {
+      this.filterProduct = this.products;
+    }
   }
 }
