@@ -1,70 +1,15 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Product } from './types/products';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  products = [
-    {
-      id: '1',
-      brand: 'US.POLO',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'Hello',
-    },
-    {
-      id: '2',
-      brand: 'US',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'Mensky',
-    },
-    {
-      id: '3',
-      brand: 'UK',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'Hi',
-    },
-    {
-      id: '4',
-      brand: 'US.POLO',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'blue ',
-    },
-    {
-      id: '5',
-      brand: 'US.POLO',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'Men ',
-    },
-    {
-      id: '6',
-      brand: 'US.POLO',
-      image:
-        'https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/5/q/6/-original-imags487ftf3g2s7.jpeg?q=70&crop=false',
-      currentPrice: '500',
-      standardPrice: '150',
-      discount: '50',
-      name: 'Jeans',
-    },
-  ];
+  httpClient = inject(HttpClient);
+  products = [];
   constructor() {}
+  getProducts() {
+    return this.httpClient.get<Product[]>('http://localhost:3000/products');
+  }
 }

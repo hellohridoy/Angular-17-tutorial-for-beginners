@@ -17,8 +17,11 @@ export class HomeComponent {
   filterProduct: any[] = [];
   productService = inject(ProductService);
   ngOnInit() {
-    this.products = this.productService.products;
-    this.filterProduct = this.products;
+    this.productService.getProducts().subscribe((result) => {
+      console.log(result);
+      this.products = result as any[];
+      this.filterProduct = this.products;
+    });
   }
   onViewProduct(event: any) {
     console.log('onViewProduct Called', event);
